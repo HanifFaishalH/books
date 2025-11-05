@@ -25,4 +25,14 @@ Soal
 - catchError digunakan untuk menerima error jika data gagal diambil. Ini dilakukan agar tampilan error tidak muncul di tampilan user.
 
 ![praktikum1](assets/praktikum1/praktikum1.gif)
+
+---
+
+### ✅ Praktikum 2: Mengunduh Data dari Web Service (API)
+
+4. Jelaskan maksud kode langkah 1 dan 2 tersebut!
+
+- langkah satu adalah fungsi-fungsi future async yang mengembalikan nilai dengan delay waktu 3 detik.
+- langkah kedua adalah fungsi untuk menghitung nilai dari fungsi future diatasnya. Nilai total akan ditambahkan dengan nilai return fungsi async future tiap 3 detik. Oleh karena itu, nilai total akan muncul setelah 9 detik.\
+
 ---
