@@ -55,3 +55,11 @@ Fungsi pada langkah 5-6 (calculate2()) ada try-catch yang dapat memperkecil kemu
 
 ![main_p3(5-6).png](assets/praktikum3/main_p3%285-6%29.png)
 ![praktikum2_soal5-6.gif](assets/praktikum3/praktikum2_soal5-6.gif)
+
+---
+
+### ✅ Praktikum 4: Memanggil Future secara Paralel
+
+Soal
+
+7. ![praktikum4_1-2.gif](assets/praktikum4/praktikum4_1-2.gif)
