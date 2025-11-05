@@ -44,11 +44,14 @@ Soal
 
 kode tersebut adalah implementasi penggunaan Completer dalam async. Completer adalah objek khusus di Dart yang digunakan untuk mengendalikan kapan sebuah Future dianggap selesai secara manual.
 
+![main_p3.png](assets/praktikum3/main_p3.png)
+![praktikum2_soal5.gif](assets/praktikum3/praktikum2_soal2.gif)
+
 6. Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
 
 Fungsi pada langkah 2 (calculate()) tidak ada penanganan error. Ketika ada error, Future bisa menggantung selamanya. Stabilitas kode kurang aman, dan lebih tinggi kemungkinan crash.
 
 Fungsi pada langkah 5-6 (calculate2()) ada try-catch yang dapat memperkecil kemungkinan crash dan menjalankan completeError() jika ada respon error.
 
-![main_p3.png](assets/praktikum3/main_p3.png)
-![praktikum2_soal5.gif](assets/praktikum3/praktikum2_soal5.gif)
+![main_p3(5-6).png](assets/praktikum3/main_p3%285-6%29.png)
+![praktikum2_soal5-6.gif](assets/praktikum3/praktikum2_soal5-6.gif)
