@@ -28,7 +28,8 @@ Soal
 
 ---
 
-### ✅ Praktikum 2: Mengunduh Data dari Web Service (API)
+### ✅ Praktikum 2: Menggunakan await/async untuk mengindari callback
+Soal
 
 4. Jelaskan maksud kode langkah 1 dan 2 tersebut!
 
@@ -36,3 +37,12 @@ Soal
 - langkah kedua adalah fungsi untuk menghitung nilai dari fungsi future diatasnya. Nilai total akan ditambahkan dengan nilai return fungsi async future tiap 3 detik. Oleh karena itu, nilai total akan muncul setelah 9 detik.\
 
 ---
+### ✅ Praktikum 3: Menggunakan Completer di Future
+
+Soal
+5. Jelaskan maksud kode langkah 2 tersebut!
+
+kode tersebut adalah implementasi penggunaan Completer dalam async. Completer adalah objek khusus di Dart yang digunakan untuk mengendalikan kapan sebuah Future dianggap selesai secara manual. Hal ini dapat dilihat dari isi fungsi calculate yang tidak memiliki async/await dan delay waktu kemunculan.
+
+![main_p3.png](assets/praktikum3/main_p3.png)
+![praktikum2_soal5.gif](assets/praktikum3/praktikum2_soal5.gif)
