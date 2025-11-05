@@ -63,3 +63,5 @@ Fungsi pada langkah 5-6 (calculate2()) ada try-catch yang dapat memperkecil kemu
 Soal
 
 7. ![praktikum4_1-2.gif](assets/praktikum4/praktikum4_1-2.gif)
+
+8. Kode pertama berasal dari package async, sedangkan kode kedua adalah Built-in Dart. Futurenya bisa ditambahkan sebelum .Close() dan fungsi ini wajib dipanggil, sedangkan kode kedua semua Future harus ada. Error handlingnya kode pertama lebih mudah dibanding kode kedua. Kode pertama lebih panjang, cocok untuk Jumlah Future tidak pasti, sedangkan Kode kedua lebih pendek, cocok untuk jumlah Future yang sudah pasti.
