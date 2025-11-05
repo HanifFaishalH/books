@@ -71,13 +71,23 @@ class _FuturePageState extends State<FuturePage> {
   // praktikum 3
   Future getNumber() {
     completer = Completer<int> ();
-    calculate();
+    // calculate();
+    calculate2();
     return completer.future;
   }
 
   Future calculate() async {
     await Future.delayed(const Duration(seconds: 5));
     completer.complete(42);
+  }
+
+  calculate2() async {
+    try {
+      await new Future.delayed(const Duration(seconds: 5));
+      completer.complete(42);
+    } catch (_) {
+      completer.completeError({});
+    }
   }
 
   @override

@@ -42,7 +42,13 @@ Soal
 Soal
 5. Jelaskan maksud kode langkah 2 tersebut!
 
-kode tersebut adalah implementasi penggunaan Completer dalam async. Completer adalah objek khusus di Dart yang digunakan untuk mengendalikan kapan sebuah Future dianggap selesai secara manual. Hal ini dapat dilihat dari isi fungsi calculate yang tidak memiliki async/await dan delay waktu kemunculan.
+kode tersebut adalah implementasi penggunaan Completer dalam async. Completer adalah objek khusus di Dart yang digunakan untuk mengendalikan kapan sebuah Future dianggap selesai secara manual.
+
+6. Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+Fungsi pada langkah 2 (calculate()) tidak ada penanganan error. Ketika ada error, Future bisa menggantung selamanya. Stabilitas kode kurang aman, dan lebih tinggi kemungkinan crash.
+
+Fungsi pada langkah 5-6 (calculate2()) ada try-catch yang dapat memperkecil kemungkinan crash dan menjalankan completeError() jika ada respon error.
 
 ![main_p3.png](assets/praktikum3/main_p3.png)
 ![praktikum2_soal5.gif](assets/praktikum3/praktikum2_soal5.gif)
