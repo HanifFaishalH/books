@@ -19,5 +19,10 @@ Soal
 ![p1_book](assets/praktikum1/p1_book.png)
 ![API Books](assets/praktikum1/praktikum1_2.png)
 
+3. Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
 
+- subString pada kode ini digunakan untuk mengambil potongan karakter dari indeks 0 sampai 449 (450 karakter pertama).
+- catchError digunakan untuk menerima error jika data gagal diambil. Ini dilakukan agar tampilan error tidak muncul di tampilan user.
+
+![praktikum1](assets/praktikum1/praktikum1.gif)
 ---
