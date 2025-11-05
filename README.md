@@ -65,3 +65,21 @@ Soal
 7. ![praktikum4_1-2.gif](assets/praktikum4/praktikum4_1-2.gif)
 
 8. Kode pertama berasal dari package async, sedangkan kode kedua adalah Built-in Dart. Futurenya bisa ditambahkan sebelum .Close() dan fungsi ini wajib dipanggil, sedangkan kode kedua semua Future harus ada. Error handlingnya kode pertama lebih mudah dibanding kode kedua. Kode pertama lebih panjang, cocok untuk Jumlah Future tidak pasti, sedangkan Kode kedua lebih pendek, cocok untuk jumlah Future yang sudah pasti.
+
+---
+
+### ✅ Praktikum 5: Menangani Respon Error pada Async Code
+
+Soal
+9. Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9".
+
+![praktikum5.gif](assets/praktikum5/praktikum5.gif)
+
+
+10. Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+![praktikum5_4.gif](assets/praktikum5/praktikum5_4.gif)
+
+- kode pertama structurnya lebih nested, tiap .then() dieksekusi berurutan, penangkapan error menggunakan .catchError(), dan ditutup dengan .whenComplete().
+
+- kode kedua lebih linear, flow kode seperti biasa, penangkapan error menggunakan catch, dan ditutup dengan finally().

@@ -137,6 +137,24 @@ class _FuturePageState extends State<FuturePage> {
     });
   }
 
+  //praktikum 5
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened');
+  }
+
+  Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
+  }
+
   // ------------------------
   // UI
   // ------------------------
@@ -152,7 +170,7 @@ class _FuturePageState extends State<FuturePage> {
             const Spacer(),
             ElevatedButton(
               child: const Text('Go'),
-              onPressed: () async {
+              onPressed: () {
                 // ✅ aktifkan loading saat tombol ditekan
                 setState(() {
                   isLoading = true;
@@ -162,7 +180,20 @@ class _FuturePageState extends State<FuturePage> {
                 // --- kamu bisa pilih fungsi mana yang mau dijalankan di sini ---
                 // await count();        // PRAKTIKUM 2
                 // await getNumber();    // PRAKTIKUM 3
-                returnFG();        // PRAKTIKUM 4 (aktif sekarang)
+                // returnFG();        // PRAKTIKUM 4
+
+                // returnError().then(
+                //     (value) {
+                //       setState(() {
+                //         result = 'Success';
+                //       });
+                //     }
+                // ).catchError((onError) {
+                //   setState(() {
+                //     result = onError.toString();
+                //   });
+                // }).whenComplete(() => print('Complete'));
+                handleError(); // praktikum 5
 
                 // ✅ matikan loading setelah Future selesai
                 setState(() {
