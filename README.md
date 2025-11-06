@@ -140,3 +140,20 @@ Soal
 - Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
 
 ![praktikum8.gif](assets/praktikum8/praktikum8.gif)
+
+---
+
+### ✅ Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+Soal 
+17.Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+tombolnya mengubah warna background. Hal ini terjadi karena ketika alert muncul dan user menekan salah satu button, warnanya mengikut warna button tersebut.
+
+![praktikum9.gif](assets/praktikum9/praktikum9.gif)
+
+- Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+
+![praktikum9_17.gif](assets/praktikum9/praktikum9_17.gif)
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 17".
