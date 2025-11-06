@@ -2,54 +2,86 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({ super.key });
+  const LocationScreen({super.key});
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  String myPosition = '';
   Future<Position>? position;
 
   @override
   void initState() {
     super.initState();
     position = getPosition();
-    getPosition().then((Position myPos) {
-      myPosition =
-          'Latitude: ${myPos.latitude.toString()} - Longtitude: ${myPos.latitude.toString()}';
-      setState(() {
-        myPosition = myPosition;
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Current Location Hilmi')),
+      appBar: AppBar(title: const Text('Current Location Hilmi')),
       body: Center(
-        child: FutureBuilder(
+        child: FutureBuilder<Position>(
           future: position,
           builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
-            } else if (snapshot.connectionState == ConnectionState.done) {
-              return Text(snapshot.data.toString());
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              final pos = snapshot.data!;
+              // beri waktu 5 detik agar perekam sempat menyimpan frame terakhir
+              Future.delayed(const Duration(seconds: 5));
+              return Text(
+                'Latitude: ${pos.latitude}\nLongitude: ${pos.longitude}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18),
+              );
+              return Text(
+                'Latitude: ${pos.latitude}\nLongitude: ${pos.longitude}',
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 18),
+              );
             } else {
-              return const Text('');
+              return const Text('Tidak dapat memuat lokasi.');
             }
-          }
+          },
         ),
       ),
     );
   }
 
   Future<Position> getPosition() async {
-    await Geolocator.isLocationServiceEnabled();
+    // Pastikan layanan lokasi aktif
+    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Layanan lokasi tidak aktif.');
+    }
+
+    // Minta izin lokasi
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Izin lokasi ditolak.');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error('Izin lokasi ditolak permanen.');
+    }
+
+    // Simulasi loading biar kelihatan saat direkam
     await Future.delayed(const Duration(seconds: 3));
-    Position position = await Geolocator.getCurrentPosition();
-    return position;
+
+    // Ambil posisi
+    Position pos = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+
+    // Tambahkan delay kecil biar rekaman sempat menangkap hasil
+    await Future.delayed(const Duration(seconds: 3));
+
+    return pos;
   }
 }

@@ -103,3 +103,24 @@ Tidak, karena geolocator hanya bisa memperkirakan lokasi lewat navigator.geoloca
 
 - Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 12".
 ![praktikum6.gif](assets/praktikum6/praktikum6.gif)
+
+### ✅ Praktikum 7: Manajemen Future dengan FutureBuilder
+
+Soal 
+13. Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+
+Ada perbedaann antara praktikum ini dan sebelahnya, yaitu, muncul loading otomatis. Hal ini terjadi karena versi ini menggunakan FutureBuilder, sehingga animasi loading spinner akan ditampilkan ketika Future belum selesai dieksekusi. Sedangkan di versi lama, hanya layar kosong saat Future belum selesai dieksekusi.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 13".
+
+![praktikum7_13.gif](assets/praktikum7/praktikum7_13.gif)
+
+14. Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?
+
+Perbedaan UI dengan langkah sebelumnya terjadi jika user tidak mengizinkan fitur lokasi. Tampilan dari aplikasi yang tidak diizinkan lokasi akan memunculkan teks dari percabangan hasError.
+
+- Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 14".
+
+![praktikum7_14.gif](assets/praktikum7/praktikum7_14.gif)
+
+---
