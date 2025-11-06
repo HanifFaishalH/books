@@ -124,3 +124,19 @@ Perbedaan UI dengan langkah sebelumnya terjadi jika user tidak mengizinkan fitur
 ![praktikum7_14.gif](assets/praktikum7/praktikum7_14.gif)
 
 ---
+
+### ✅ Praktikum 8: Navigation route dengan Future Function
+
+Soal
+15. Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+    Silakan ganti dengan warna tema favorit Anda.
+![main_p8.png](assets/praktikum8/main_p8.png)
+![main_p8_2.png](assets/praktikum8/main_p8_2.png)
+
+16. Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+- Warna backgroundnya ikut berubah. Hal ini terjadi karena ketika salah satu button warna di navigation_second diklik, warnanya mengikut warna button tersebut.
+
+- Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!
+
+![praktikum8.gif](assets/praktikum8/praktikum8.gif)
