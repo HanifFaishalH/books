@@ -1,3 +1,4 @@
+import 'package:books/geolocation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const FuturePage(),
+      home: const LocationScreen(),
     );
   }
 }
@@ -34,17 +35,7 @@ class FuturePage extends StatefulWidget {
 class _FuturePageState extends State<FuturePage> {
   String result = '';
   late Completer completer;
-  bool isLoading = false; // ✅ penanda loading
-
-  // ------------------------
-  // PRAKTIKUM 1
-  // ------------------------
-  // Future<Response> getData() async {
-  //   const authority = 'www.googleapis.com';
-  //   const path = '/books/v1/volumes/rXzelwEACAAJ';
-  //   Uri url = Uri.https(authority, path);
-  //   return http.get(url);
-  // }
+  bool isLoading = false; // ✅ indikator loading
 
   // ------------------------
   // PRAKTIKUM 2
@@ -79,17 +70,11 @@ class _FuturePageState extends State<FuturePage> {
   // ------------------------
   Future getNumber() {
     completer = Completer<int>();
-    // calculate();
     calculate2();
     return completer.future;
   }
 
-  Future calculate() async {
-    await Future.delayed(const Duration(seconds: 5));
-    completer.complete(42);
-  }
-
-  calculate2() async {
+  Future calculate2() async {
     try {
       await Future.delayed(const Duration(seconds: 5));
       completer.complete(42);
@@ -101,23 +86,6 @@ class _FuturePageState extends State<FuturePage> {
   // ------------------------
   // PRAKTIKUM 4
   // ------------------------
-  // void returnFG() {
-  //   FutureGroup<int> futureGroup = FutureGroup<int>();
-  //   futureGroup.add(returnOneAsync());
-  //   futureGroup.add(returnTwoAsync());
-  //   futureGroup.add(returnThreeAsync());
-  //   futureGroup.close();
-  //   futureGroup.future.then((List<int> value) {
-  //     int total = 0;
-  //     for (var element in value) {
-  //       total += element;
-  //     }
-  //
-  //     setState(() {
-  //       result = total.toString();
-  //     });
-  //   });
-  // }
   Future<void> returnFG() async {
     final futures = Future.wait<int>([
       returnOneAsync(),
@@ -137,7 +105,9 @@ class _FuturePageState extends State<FuturePage> {
     });
   }
 
-  //praktikum 5
+  // ------------------------
+  // PRAKTIKUM 5
+  // ------------------------
   Future returnError() async {
     await Future.delayed(const Duration(seconds: 2));
     throw Exception('Something terrible happened');
@@ -146,6 +116,9 @@ class _FuturePageState extends State<FuturePage> {
   Future handleError() async {
     try {
       await returnError();
+      setState(() {
+        result = 'Success';
+      });
     } catch (error) {
       setState(() {
         result = error.toString();
@@ -170,32 +143,23 @@ class _FuturePageState extends State<FuturePage> {
             const Spacer(),
             ElevatedButton(
               child: const Text('Go'),
-              onPressed: () {
-                // ✅ aktifkan loading saat tombol ditekan
+              onPressed: () async {
+                // ✅ Aktifkan loading
                 setState(() {
                   isLoading = true;
                   result = '';
                 });
 
-                // --- kamu bisa pilih fungsi mana yang mau dijalankan di sini ---
+                // ✅ Beri kesempatan UI untuk menggambar ulang
+                await Future.delayed(Duration.zero);
+
+                // --- PILIH PRAKTIKUM ---
                 // await count();        // PRAKTIKUM 2
                 // await getNumber();    // PRAKTIKUM 3
-                // returnFG();        // PRAKTIKUM 4
+                // await returnFG();     // PRAKTIKUM 4
+                await handleError();     // PRAKTIKUM 5
 
-                // returnError().then(
-                //     (value) {
-                //       setState(() {
-                //         result = 'Success';
-                //       });
-                //     }
-                // ).catchError((onError) {
-                //   setState(() {
-                //     result = onError.toString();
-                //   });
-                // }).whenComplete(() => print('Complete'));
-                handleError(); // praktikum 5
-
-                // ✅ matikan loading setelah Future selesai
+                // ✅ Matikan loading setelah async selesai
                 setState(() {
                   isLoading = false;
                 });
@@ -204,7 +168,7 @@ class _FuturePageState extends State<FuturePage> {
             const Spacer(),
             Text(result),
             const Spacer(),
-            // ✅ loading hanya muncul saat isLoading = true
+            // ✅ Loading hanya tampil saat async berjalan
             isLoading
                 ? const CircularProgressIndicator()
                 : const SizedBox(height: 40),

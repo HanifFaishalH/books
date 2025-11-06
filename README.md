@@ -83,3 +83,8 @@ Soal
 - kode pertama structurnya lebih nested, tiap .then() dieksekusi berurutan, penangkapan error menggunakan .catchError(), dan ditutup dengan .whenComplete().
 
 - kode kedua lebih linear, flow kode seperti biasa, penangkapan error menggunakan catch, dan ditutup dengan finally().
+
+---
+
+### ✅ Praktikum 6: Menggunakan Future dengan StatefulWidget
+
