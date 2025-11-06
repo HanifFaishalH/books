@@ -16,7 +16,7 @@ class _LocationScreenState extends State<LocationScreen> {
     super.initState();
     getPosition().then((Position myPos) {
       myPosition =
-          'Latitude: ${myPos.latitude.toString()} - Longtitude: {myPos.latitude.toString()}';
+          'Latitude: ${myPos.latitude.toString()} - Longtitude: ${myPos.latitude.toString()}';
       setState(() {
         myPosition = myPosition;
       });
@@ -25,6 +25,10 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final myWidget = myPosition == ''
+      ? const CircularProgressIndicator()
+        : Text(myPosition);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Current Location Hilmi'),
@@ -34,6 +38,7 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   Future<Position> getPosition() async {
+    await Future.delayed(const Duration(seconds: 3));
     await Geolocator.requestPermission();
     await Geolocator.isLocationServiceEnabled();
     Position? position =
